@@ -30,6 +30,7 @@ class ViewController: UIViewController {
         if numberOfItemsThatCanInCollectionView > count {
             let totalCellWidth = collectionViewHeight * CGFloat(count)
             let totalSpacingWidth: CGFloat = CGFloat(count) * (CGFloat(count) - 1)
+            // leftInset, rightInset are the global variables which I am passing to the below function
             leftInset = (collectionViewWidth - CGFloat(totalCellWidth + totalSpacingWidth)) / 2;
             rightInset = -leftInset
         } else {
