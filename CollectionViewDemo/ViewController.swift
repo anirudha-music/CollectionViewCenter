@@ -20,14 +20,14 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         refreshCollectionView(count)
+        textField.text = "3"
     }
     
     func refreshCollectionView(count: Int) {
-        print(count)
         let collectionViewHeight = collectionView.bounds.height
         let collectionViewWidth = collectionView.bounds.width
-        let numberOfItemsThatCanInCollectionView = collectionViewWidth / collectionViewHeight
-        if Int(numberOfItemsThatCanInCollectionView) > count {
+        let numberOfItemsThatCanInCollectionView = Int(collectionViewWidth / collectionViewHeight)
+        if numberOfItemsThatCanInCollectionView > count {
             let totalCellWidth = collectionViewHeight * CGFloat(count)
             let totalSpacingWidth: CGFloat = CGFloat(count) * (CGFloat(count) - 1)
             leftInset = (collectionViewWidth - CGFloat(totalCellWidth + totalSpacingWidth)) / 2;
@@ -40,7 +40,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func refreshController(sender: AnyObject) {
-        count = Int(textField.text ?? "0") ?? 0
+        count = Int(textField.text ?? "1") ?? 1
         refreshCollectionView(count)
     }
 }
