@@ -12,10 +12,31 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     
+    var leftInset: CGFloat = 0.0
+    var rightInset: CGFloat = 0.0
+    let count = 3
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        refreshCollectionView()
     }
+    
+    func refreshCollectionView() {
+        let collectionViewHeight = collectionView.bounds.height
+        let collectionViewWidth = collectionView.bounds.width
+        let numberOfItemsThatCanInCollectionView = collectionViewWidth / collectionViewHeight
+        if Int(numberOfItemsThatCanInCollectionView) > count {
+            let totalCellWidth = collectionViewHeight * CGFloat(count)
+            let totalSpacingWidth: CGFloat = CGFloat(count) * (CGFloat(count) - 1)
+            leftInset = (collectionViewWidth - CGFloat(totalCellWidth + totalSpacingWidth)) / 2;
+            rightInset = -leftInset
+        } else {
+            leftInset = 0.0
+            rightInset = -collectionViewHeight
+        }
+        collectionView.reloadData()
+    }
+    
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
@@ -24,7 +45,7 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return count
     }
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
@@ -34,12 +55,6 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     }
     
     func collectionView(collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAtIndex section: Int) -> UIEdgeInsets {
-        let totalCellWidth = collectionView.bounds.height * 10
-        let totalSpacingWidth: CGFloat = 10 * (10 - 1)
-        
-        let leftInset = (collectionView.bounds.width - CGFloat(totalCellWidth + totalSpacingWidth)) / 2;
-        let rightInset = leftInset
-
         return UIEdgeInsetsMake(0, leftInset, 0, rightInset)
     }
     
