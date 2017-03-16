@@ -43,10 +43,29 @@
                                     <outlet property="delegate" destination="BYZ-38-t0r" id="Xbe-h0-d3d"/>
                                 </connections>
                             </collectionView>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter number" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="zTM-Rz-Id9">
+                                <rect key="frame" x="437" y="99" width="150" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="150" id="YzL-jP-99v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9dA-8l-Ai2">
+                                <rect key="frame" x="486" y="139" width="53" height="30"/>
+                                <state key="normal" title="Refresh"/>
+                                <connections>
+                                    <action selector="refreshController:" destination="BYZ-38-t0r" eventType="touchUpInside" id="e3D-bk-OdF"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="L3i-bv-M3X" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="40" id="PDJ-CT-JBy"/>
+                            <constraint firstItem="9dA-8l-Ai2" firstAttribute="centerX" secondItem="zTM-Rz-Id9" secondAttribute="centerX" id="aE2-kD-pHU"/>
+                            <constraint firstItem="zTM-Rz-Id9" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="cXK-jb-Zbu"/>
+                            <constraint firstItem="9dA-8l-Ai2" firstAttribute="top" secondItem="zTM-Rz-Id9" secondAttribute="bottom" constant="10" id="f2f-fI-G85"/>
+                            <constraint firstItem="L3i-bv-M3X" firstAttribute="top" secondItem="9dA-8l-Ai2" secondAttribute="bottom" constant="100" id="pOe-fp-gcW"/>
                             <constraint firstAttribute="trailing" secondItem="L3i-bv-M3X" secondAttribute="trailing" constant="40" id="rgP-cd-2pL"/>
                             <constraint firstItem="L3i-bv-M3X" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="vfx-lV-075"/>
                             <constraint firstItem="L3i-bv-M3X" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.3" id="zPg-5q-rku"/>
@@ -56,6 +75,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="iPad"/>
                     <connections>
                         <outlet property="collectionView" destination="L3i-bv-M3X" id="3R7-Lx-RzZ"/>
+                        <outlet property="textField" destination="zTM-Rz-Id9" id="rEb-Fl-XCi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>

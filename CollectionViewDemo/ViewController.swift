@@ -11,17 +11,19 @@ import UIKit
 class ViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var textField: UITextField!
     
     var leftInset: CGFloat = 0.0
     var rightInset: CGFloat = 0.0
-    let count = 3
+    var count = 3
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        refreshCollectionView()
+        refreshCollectionView(count)
     }
     
-    func refreshCollectionView() {
+    func refreshCollectionView(count: Int) {
+        print(count)
         let collectionViewHeight = collectionView.bounds.height
         let collectionViewWidth = collectionView.bounds.width
         let numberOfItemsThatCanInCollectionView = collectionViewWidth / collectionViewHeight
@@ -37,6 +39,10 @@ class ViewController: UIViewController {
         collectionView.reloadData()
     }
     
+    @IBAction func refreshController(sender: AnyObject) {
+        count = Int(textField.text ?? "0") ?? 0
+        refreshCollectionView(count)
+    }
 }
 
 extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, UICollectionViewDelegateFlowLayout {
