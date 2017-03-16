@@ -16,9 +16,9 @@ class ViewController: UIViewController {
     var leftInset: CGFloat = 0.0
     var rightInset: CGFloat = 0.0
     var count = 3
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         refreshCollectionView(count)
     }
     
