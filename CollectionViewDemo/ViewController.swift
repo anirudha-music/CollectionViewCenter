@@ -43,6 +43,7 @@ class ViewController: UIViewController {
     @IBAction func refreshController(_ sender: AnyObject) {
         count = Int(textField.text ?? "1") ?? 1
         refreshCollectionView(count)
+        textField.resignFirstResponder()
     }
 }
 
@@ -64,6 +65,10 @@ extension ViewController: UICollectionViewDataSource, UICollectionViewDelegate, 
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return UIEdgeInsetsMake(0, leftInset, 0, rightInset)
     }
+    
+//    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+//    
+//    }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
         return CGSize(width: collectionView.bounds.height, height: collectionView.bounds.height)
